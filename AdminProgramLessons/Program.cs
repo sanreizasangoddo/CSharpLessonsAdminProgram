@@ -10,6 +10,7 @@ namespace AdminProgramLessons
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("yo whaddup");
         }
     }
 }
