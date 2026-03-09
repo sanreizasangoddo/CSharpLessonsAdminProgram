@@ -11,7 +11,8 @@ namespace AdminProgramLessons
     {
         static void Main(string[] args)
         {
-            User Yassir = new User("Yassir", "Drachtenstraat 4", "+31 6 81994295", "yassir.ouallal@gmail.com", 16, 0217492168);
+            User Yassir = new User("Yassir", "Drachtenstraat 4", "+31 6 81994295", "yassir.ouallal@gmail.com", 16, "lemonke69420");
+            Yassir.ShowInformation();
         }
     }
 }
