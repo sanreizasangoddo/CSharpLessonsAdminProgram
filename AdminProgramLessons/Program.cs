@@ -13,6 +13,9 @@ namespace AdminProgramLessons
         {
             User Yassir = new User("Yassir", "Drachtenstraat 4", "+31 6 81994295", "yassir.ouallal@gmail.com", 16, "lemonke69420");
             Yassir.ShowInformation();
+
+            UserList test = new UserList();
+            test.Start();
         }
     }
 }
