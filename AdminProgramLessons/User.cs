@@ -54,14 +54,5 @@ namespace AdminProgramLessons
             _age = age;
             _password = password;
         }
-
-        public void ShowInformation()
-        {
-            Console.WriteLine($"Welkom {_name}!");
-            Console.WriteLine($"Adres Gebruiker: {_adress}");
-            Console.WriteLine($"Telefoonnummer Gebruiker: {_phoneNumber}");
-            Console.WriteLine($"Email Gebruiker: {_email}");
-            Console.WriteLine($"Leeftijd Gebruiker: {_age}");
-        }
     }
 }
