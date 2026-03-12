@@ -18,7 +18,7 @@ namespace AdminProgramLessons
             // Menu blijft draaien totdat gebruiker afsluit
             while (running)
             {
-                Console.WriteLine("\n--- KLANT MENU ---");
+                Console.WriteLine("--- KLANT MENU ---");
                 Console.WriteLine("1. Klant toevoegen");
                 Console.WriteLine("2. Klanten bekijken");
                 Console.WriteLine("3. Klant bewerken");
@@ -29,7 +29,7 @@ namespace AdminProgramLessons
                 Console.WriteLine("\nMaak een keuze:");
 
                 int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) || choice > 6)
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice > 6 || choice == 0)
                 {
                     Console.WriteLine("Ongeldige invoer: Voer één van de keuzes in.");
                 }
@@ -38,7 +38,7 @@ namespace AdminProgramLessons
                 switch (choice)
                 {
                      case 1:
-                         //AddUser();
+                         AddUser();
                          break;
 
                      case 2:
@@ -60,6 +60,57 @@ namespace AdminProgramLessons
                      case 6:
                          running = false; // stopt het programma
                          break;
+                }
+            }
+        }
+
+        static void AddUser()
+        {
+            Console.Clear();
+            string naam;
+            bool geldig = false;
+
+            while (!geldig)
+            {
+                Console.WriteLine("Voer uw naam in alstublieft:");
+                naam = Console.ReadLine();
+
+                geldig = true;
+
+                foreach (char c in naam)
+                {
+                    if (!char.IsLetter(c) && c != ' ')
+                    {
+                        geldig = false;
+                        Console.Clear();
+                        Console.WriteLine("Ongeldige invoer. Voer letters in alstublieft.");
+                        break;
+                    }
+                }
+            }
+
+            Console.Clear();
+            Console.WriteLine($"Voer uw adres in alstublieft:");
+            string adres = Console.ReadLine();
+
+            Console.Clear();
+            string phoneNumber;
+
+            while (!geldig)
+            {
+                Console.WriteLine("Voer uw telefoonnummer in alstublieft:");
+                phoneNumber = Console.ReadLine();
+
+                geldig = true;
+
+                foreach (char c in phoneNumber)
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        geldig = false;
+                        Console.WriteLine("Ongeldige invoer. Voer een cijfer in alstublieft.");
+                        break;
+                    }
                 }
             }
         }
