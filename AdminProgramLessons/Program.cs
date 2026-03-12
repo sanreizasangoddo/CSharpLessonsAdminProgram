@@ -13,7 +13,6 @@ namespace AdminProgramLessons
 
         static void Main(string[] args)
         {
-            List<User> userList = new List<User>();
             bool running = true; // bepaalt of het programma blijft draaien
 
             // Menu blijft draaien totdat gebruiker afsluit
