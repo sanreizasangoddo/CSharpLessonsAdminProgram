@@ -147,9 +147,9 @@ namespace AdminProgramLessons
             int age;
             Console.WriteLine("Voer uw leeftijd in:");
 
-            while (!int.TryParse(Console.ReadLine(), out age) || age <= 8 || age >= 121)
+            while (!int.TryParse(Console.ReadLine(), out age) || age <= 5 || age >= 123)
             {
-                Console.WriteLine("Voer een geldig leeftijd in.");
+                Console.WriteLine("Ongeldige invoer. Voer een geldig leeftijd in.");
             }
 
             Console.Clear();
@@ -167,6 +167,7 @@ namespace AdminProgramLessons
                 }
             }
             while (password.Length < 6);
+            Console.Clear();
         }
     }
 }
