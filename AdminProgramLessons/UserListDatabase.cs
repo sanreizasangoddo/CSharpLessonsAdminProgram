@@ -81,7 +81,7 @@ namespace AdminProgramLessons
 
             while (!geldig)
             {
-                Console.WriteLine("Voer uw naam in alstublieft:");
+                Console.WriteLine("Voer uw naam in:");
                 naam = Console.ReadLine();
 
                 geldig = true;
@@ -118,11 +118,11 @@ namespace AdminProgramLessons
                 // Checkt of er geen letters in jouw telefoonnummer staan
                 foreach (char c in phoneNumber)
                 {
-                    if (!char.IsDigit(c) && c != ' ')
+                    if (!char.IsDigit(c) && c != ' ' && phoneNumber.Length == 10)
                     {
                         geldig = false;
                         Console.Clear();
-                        Console.WriteLine("Ongeldige invoer. Alleen cijfers toegestaan.");
+                        Console.WriteLine("Ongeldige invoer. Voer een geldige telefoonnummer in.");
                         break;
                     }
                 }
@@ -135,13 +135,13 @@ namespace AdminProgramLessons
                 Console.WriteLine("Voer uw email in:");
                 email = Console.ReadLine();
 
-                if (!email.Contains("@") && !email.Contains(".com"))
+                if (!email.Contains("@") && !email.Contains(".com") && email.Length <= 15)
                 {
                     Console.Clear();
                     Console.WriteLine("Ongeldige invoer. Email moet de standaard eigenschappen bevatten.");
                 }
             }
-            while (!email.Contains("@") && !email.Contains(".com"));
+            while (!email.Contains("@") && !email.Contains(".com") && email.Length <= 15);
 
             Console.Clear();
             int age;
@@ -168,6 +168,7 @@ namespace AdminProgramLessons
             }
             while (password.Length < 6);
             Console.Clear();
+            Console.WriteLine("Klant succesvol toegevoegd!");
         }
     }
 }
