@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace AdminProgramLessons
     internal class User
     {
         private string _name;
-        private string _adress;
+        private string _address;
         private string _phoneNumber;
         private string _email;
         private int _age;
@@ -20,9 +21,9 @@ namespace AdminProgramLessons
             get { return _name; }
         }
 
-        public string Adress
+        public string Address
         {
-            get { return _adress; }
+            get { return _address; }
         }
 
         public string PhoneNumber
@@ -45,14 +46,24 @@ namespace AdminProgramLessons
             get { return _password; }
         }
 
-        public User(string name, string adress, string phoneNumber, string email, int age, string password)
+        public User(string name, string address, string phoneNumber, string email, int age, string password)
         {
             _name = name;
-            _adress = adress;
+            _address = address;
             _phoneNumber = phoneNumber;
             _email = email;
             _age = age;
             _password = password;
+        }
+
+        // Hoe de klant wordt weergegeven
+        public void Display()
+        {
+            Console.WriteLine($"Naam: {Name}");
+            Console.WriteLine($"Adres: {Address}");
+            Console.WriteLine($"Email: {Email}");
+            Console.WriteLine($"Leeftijd: {Age}");
+            Console.WriteLine($"Telefoonnummer: {PhoneNumber}");
         }
     }
 }

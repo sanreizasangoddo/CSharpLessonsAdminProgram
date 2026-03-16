@@ -9,9 +9,15 @@ namespace AdminProgramLessons
     internal class UserListDatabase
     {
         List<User> userList = new List<User>();
-
+        
         public void Start()
         {
+            User user1 = new User("Yassir Ouallal", "Drachtenstraat 4", "06 81994295", "yassir.ouallal@gmail.com", 16, "lemonke69420");
+            userList.Add(user1);
+
+            User user2 = new User("Deon Maes", "De Marken", "06 18217017", "deon.maes@gmail.com", 16, "pastapesto962");
+            userList.Add(user2);
+
             bool running = true; // bepaalt of het programma blijft draaien
 
             // Menu blijft draaien totdat gebruiker afsluit
@@ -50,7 +56,7 @@ namespace AdminProgramLessons
                         break;
 
                     case 2:
-                        //ShowUser();
+                        ShowUser();
                         break;
 
                     case 3:
@@ -118,7 +124,7 @@ namespace AdminProgramLessons
                 // Checkt of er geen letters in jouw telefoonnummer staan
                 foreach (char c in phoneNumber)
                 {
-                    if (!char.IsDigit(c) && c != ' ' && phoneNumber.Length == 10)
+                    if (!char.IsDigit(c) && c != ' ' && phoneNumber.Length < 10)
                     {
                         geldig = false;
                         Console.Clear();
@@ -169,6 +175,34 @@ namespace AdminProgramLessons
             while (password.Length < 6);
             Console.Clear();
             Console.WriteLine("Klant succesvol toegevoegd!");
+        }
+
+        void ShowUser()
+        {
+            Console.Clear();
+
+            if (userList.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("--- KLANT MENU ---");
+                Console.WriteLine("1. Klant toevoegen");
+                Console.WriteLine("2. Klanten bekijken");
+                Console.WriteLine("3. Klant bewerken");
+                Console.WriteLine("4. Klant verwijderen");
+                Console.WriteLine("5. Zoeken op leeftijd");
+                Console.WriteLine("6. Afsluiten");
+
+                Console.WriteLine("\nGeen klanten gevonden.");
+            }
+            else
+            {
+                Console.Clear();
+                foreach (User user in userList)
+                {
+                    user.Display();
+                    Console.WriteLine(" ");
+                }
+            }
         }
     }
 }

@@ -9,7 +9,6 @@ namespace AdminProgramLessons
 {
     internal class Program
     {
-        List<User> userList = new List<User>();
 
         static void Main(string[] args)
         {
