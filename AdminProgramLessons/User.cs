@@ -19,31 +19,37 @@ namespace AdminProgramLessons
         public string Name
         {
             get { return _name; }
+            set { _name = value; }
         }
 
         public string Address
         {
             get { return _address; }
+            set { _address = value; }
         }
 
         public string PhoneNumber
         {
             get { return _phoneNumber; }
+            set { _phoneNumber = value; }
         }
 
         public string Email
         {
             get { return _email; }
+            set { _email = value; }
         }
 
         public int Age
         {
             get { return _age; }
+            set { _age = value; }
         }
 
         public string Password
         {
             get { return _password; }
+            set { _password = value; }
         }
 
         public User(string name, string address, string phoneNumber, string email, int age, string password)

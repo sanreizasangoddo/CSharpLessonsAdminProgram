@@ -60,7 +60,7 @@ namespace AdminProgramLessons
                         break;
 
                     case 3:
-                        //EditUser();
+                        EditUser();
                         break;
 
                     case 4:
@@ -82,18 +82,18 @@ namespace AdminProgramLessons
         {
             Console.Clear();
 
-            string naam = "";
+            string name = "";
             bool geldig = false;
 
             while (!geldig)
             {
                 Console.WriteLine("Voer uw naam in:");
-                naam = Console.ReadLine();
+                name = Console.ReadLine();
 
                 geldig = true;
 
                 // Checkt of er geen cijfers in jouw naam staan
-                foreach (char c in naam)
+                foreach (char c in name)
                 {
                     if (!char.IsLetter(c) && c != ' ')
                     {
@@ -107,7 +107,7 @@ namespace AdminProgramLessons
             Console.Clear();
 
             Console.WriteLine("Voer uw adres in:");
-            string adres = Console.ReadLine();
+            string address = Console.ReadLine();
 
             Console.Clear();
 
@@ -124,7 +124,7 @@ namespace AdminProgramLessons
                 // Checkt of er geen letters in jouw telefoonnummer staan
                 foreach (char c in phoneNumber)
                 {
-                    if (!char.IsDigit(c) && c != ' ' && phoneNumber.Length < 10)
+                    if (!char.IsDigit(c) && c != ' ' || phoneNumber.Length != 11)
                     {
                         geldig = false;
                         Console.Clear();
@@ -150,6 +150,7 @@ namespace AdminProgramLessons
             while (!email.Contains("@") && !email.Contains(".com") && email.Length <= 15);
 
             Console.Clear();
+
             int age;
             Console.WriteLine("Voer uw leeftijd in:");
 
@@ -159,8 +160,8 @@ namespace AdminProgramLessons
             }
 
             Console.Clear();
-            string password;
 
+            string password;
             do
             {
                 Console.WriteLine("Maak een wachtwoord (minimaal 6 tekens):");
@@ -174,7 +175,10 @@ namespace AdminProgramLessons
             }
             while (password.Length < 6);
             Console.Clear();
-            Console.WriteLine("Klant succesvol toegevoegd!");
+            Console.WriteLine("Klant succesvol toegevoegd! \n");
+
+            User AddUser = new User(name, address, phoneNumber, email, age, password);
+            userList.Add(AddUser);
         }
 
         void ShowUser()
@@ -203,6 +207,119 @@ namespace AdminProgramLessons
                     Console.WriteLine(" ");
                 }
             }
+        }
+
+        void EditUser()
+        {
+            Console.Clear();
+
+            ShowUser();
+
+            Console.WriteLine("Welke klant wil je bewerken?");
+            int index;
+
+            while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+            {
+                Console.WriteLine("Ongeldige keuze.");
+            }
+
+            User user = userList[index - 1];
+
+            Console.Clear();
+
+            bool geldig = false;
+
+            while (!geldig)
+            {
+                Console.WriteLine("Voer uw nieuwe naam in:");
+                user.Name = Console.ReadLine();
+
+                geldig = true;
+
+                // Checkt of er geen cijfers in jouw naam staan
+                foreach (char c in user.Name)
+                {
+                    if (!char.IsLetter(c) && c != ' ')
+                    {
+                        geldig = false;
+                        Console.Clear();
+                        Console.WriteLine("Ongeldige invoer. Alleen letters toegestaan.");
+                        break;
+                    }
+                }
+            }
+
+            Console.Clear();
+
+            Console.WriteLine("Voer uw nieuwe adres in:");
+            user.Address = Console.ReadLine();
+
+            Console.Clear();
+
+            geldig = false;
+
+            while (!geldig)
+            {
+                Console.WriteLine("Voer uw nieuwe telefoonnummer in:");
+                user.PhoneNumber = Console.ReadLine();
+
+                geldig = true;
+
+                // Checkt of er geen letters in jouw telefoonnummer staan
+                foreach (char c in user.PhoneNumber)
+                {
+                    if (!char.IsDigit(c) && c != ' ' || user.PhoneNumber.Length != 11)
+                    {
+                        geldig = false;
+                        Console.Clear();
+                        Console.WriteLine("Ongeldige invoer. Voer een geldige telefoonnummer in.");
+                        break;
+                    }
+                }
+            }
+
+            Console.Clear();
+
+            do
+            {
+                Console.WriteLine("Voer uw nieuwe email in:");
+                user.Email = Console.ReadLine();
+
+                if (!user.Email.Contains("@") && !user.Email.Contains(".com") && user.Email.Length <= 15)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Ongeldige invoer. Email moet de standaard eigenschappen bevatten.");
+                }
+            }
+            while (!user.Email.Contains("@") && !user.Email.Contains(".com") && user.Email.Length <= 15);
+
+            Console.Clear();
+
+            Console.WriteLine("Voer uw nieuwe leeftijd in:");
+            int age;
+            while (!int.TryParse(Console.ReadLine(), out age) || age <= 5 || age >= 123)
+            {
+                Console.WriteLine("Ongeldige invoer. Voer een geldig leeftijd in.");
+            }
+            user.Age = age;
+
+            Console.Clear();
+
+            do
+            {
+                Console.WriteLine("Maak een nieuwe wachtwoord (minimaal 6 tekens):");
+                user.Password = Console.ReadLine();
+
+                if (user.Password.Length < 6)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Ongeldige invoer. Wachtwoord moet langer zijn.");
+                }
+            }
+            while (user.Password.Length < 6);
+
+            Console.Clear();
+            Console.WriteLine("Klant aangepast! \n");
         }
     }
 }
