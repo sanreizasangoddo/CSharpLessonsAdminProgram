@@ -64,7 +64,7 @@ namespace AdminProgramLessons
                         break;
 
                     case 4:
-                        //DeleteUser();
+                        DeleteUser();
                         break;
 
                     case 5:
@@ -320,6 +320,27 @@ namespace AdminProgramLessons
 
             Console.Clear();
             Console.WriteLine("Klant aangepast! \n");
+        }
+
+        void DeleteUser()
+        {
+            Console.Clear();
+
+            ShowUser();
+
+            Console.WriteLine("Welke klant wil je verwijderen?");
+            int index;
+
+            while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+            {
+                Console.WriteLine("Ongeldige keuze.");
+            }
+
+            userList.RemoveAt(index - 1);
+
+            Console.Clear();
+
+            Console.WriteLine("Klant verwijderd. \n");
         }
     }
 }
