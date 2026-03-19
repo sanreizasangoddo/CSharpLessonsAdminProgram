@@ -10,7 +10,7 @@ namespace AdminProgramLessons
     {
         private UserListDatabase _userListDatabase = new UserListDatabase();
 
-        void UserMenu()
+        public void UserMenu()
         {
             bool running = true; // bepaalt of het programma blijft draaien
 

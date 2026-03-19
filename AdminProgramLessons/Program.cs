@@ -12,8 +12,8 @@ namespace AdminProgramLessons
 
         static void Main(string[] args)
         {
-            UserListDatabase user = new UserListDatabase();
-            user.Start();
+            Menu menu = new Menu();
+            menu.UserMenu();
         }
     }
 }
