@@ -22,13 +22,12 @@ namespace AdminProgramLessons
                 Console.WriteLine("2. Klanten bekijken");
                 Console.WriteLine("3. Klant bewerken");
                 Console.WriteLine("4. Klant verwijderen");
-                Console.WriteLine("5. Zoeken op leeftijd");
-                Console.WriteLine("6. Afsluiten");
+                Console.WriteLine("5. Afsluiten");
 
                 Console.WriteLine("\nMaak een keuze:");
 
                 int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) || choice > 6 || choice == 0)
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5 || choice == 0)
                 {
                     Console.Clear();
                     Console.WriteLine("--- KLANT MENU ---");
@@ -36,8 +35,7 @@ namespace AdminProgramLessons
                     Console.WriteLine("2. Klanten bekijken");
                     Console.WriteLine("3. Klant bewerken");
                     Console.WriteLine("4. Klant verwijderen");
-                    Console.WriteLine("5. Zoeken op leeftijd");
-                    Console.WriteLine("6. Afsluiten");
+                    Console.WriteLine("5. Afsluiten");
 
                     Console.WriteLine("\nOngeldige invoer: Voer één van de keuzes in.");
                 }
@@ -62,10 +60,6 @@ namespace AdminProgramLessons
                         break;
 
                     case 5:
-                        //SearchAge();
-                        break;
-
-                    case 6:
                         running = false; // stopt het programma
                         break;
                 }

@@ -8,10 +8,9 @@ namespace AdminProgramLessons
 {
     internal class UserListDatabase
     {
-
         List<User> userList = new List<User>();
 
-        public void Start()
+        public UserListDatabase()
         {
             User user1 = new User("Yassir Ouallal", "Drachtenstraat 4", "06 81994295", "yassir.ouallal@gmail.com", 16, "lemonke69420");
             userList.Add(user1);
@@ -19,7 +18,6 @@ namespace AdminProgramLessons
             User user2 = new User("Deon Maes", "De Marken", "06 18217017", "deon.maes@gmail.com", 16, "pastapesto962");
             userList.Add(user2);
         }
-
 
         public void AddUser()
         {
@@ -117,7 +115,9 @@ namespace AdminProgramLessons
                 }
             }
             while (password.Length < 6);
+
             Console.Clear();
+
             Console.WriteLine("Klant succesvol toegevoegd! \n");
 
             User AddNewUser = new User(name, address, phoneNumber, email, age, password);
@@ -132,15 +132,8 @@ namespace AdminProgramLessons
             if (userList.Count == 0)
             {
                 Console.Clear();
-                Console.WriteLine("--- KLANT MENU ---");
-                Console.WriteLine("1. Klant toevoegen");
-                Console.WriteLine("2. Klanten bekijken");
-                Console.WriteLine("3. Klant bewerken");
-                Console.WriteLine("4. Klant verwijderen");
-                Console.WriteLine("5. Zoeken op leeftijd");
-                Console.WriteLine("6. Afsluiten");
-
-                Console.WriteLine("\nGeen klanten gevonden.");
+                
+                Console.WriteLine("Geen klanten gevonden. \n");
             }
             else
             {
@@ -155,44 +148,63 @@ namespace AdminProgramLessons
 
         public void EditUser()
         {
-            Console.Clear();
-
-            ShowUser();
-
-            Console.WriteLine("Welke klant wil je bewerken?");
-            int index;
-
-            while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+            if (userList.Count == 0)
             {
-                Console.WriteLine("Ongeldige keuze.");
+                Console.Clear();
+
+                Console.WriteLine("Geen klanten gevonden. \n");
             }
+            else
+            {
+                Console.Clear();
 
-            User user = userList[index - 1];
-            userList.RemoveAt(index - 1);
-            Console.Clear();
+                ShowUser();
 
-            AddUser();
+                Console.WriteLine("Welke klant wil je bewerken?");
+                int index;
+
+                while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+                {
+                    Console.WriteLine("Ongeldige keuze.");
+                }
+
+                User user = userList[index - 1];
+                userList.RemoveAt(index - 1);
+
+                Console.Clear();
+
+                AddUser();
+            }
         }
 
         public void DeleteUser()
         {
-            Console.Clear();
-
-            ShowUser();
-
-            Console.WriteLine("Welke klant wil je verwijderen?");
-            int index;
-
-            while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+            if (userList.Count == 0)
             {
-                Console.WriteLine("Ongeldige keuze.");
+                Console.Clear();
+
+                Console.WriteLine("Geen klanten gevonden. \n");
             }
+            else
+            {
+                Console.Clear();
 
-            userList.RemoveAt(index - 1);
+                ShowUser();
 
-            Console.Clear();
+                Console.WriteLine("Welke klant wil je verwijderen?");
+                int index;
 
-            Console.WriteLine("Klant verwijderd. \n");
+                while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+                {
+                    Console.WriteLine("Ongeldige keuze.");
+                }
+
+                userList.RemoveAt(index - 1);
+
+                Console.Clear();
+
+                Console.WriteLine("Klant verwijderd. \n");
+            }
         }
     }
 }
