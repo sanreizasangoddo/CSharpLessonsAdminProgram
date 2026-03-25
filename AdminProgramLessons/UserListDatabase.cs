@@ -162,7 +162,8 @@ namespace AdminProgramLessons
 
                 ShowUser();
 
-                Console.WriteLine("Welke klant wil je bewerken?");
+                Console.WriteLine("Welke klant wil je bewerken? \n");
+                Console.WriteLine($"Kies een nummer van 1 tot {_userList.Count}:");
                 int index;
 
                 while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > _userList.Count)
