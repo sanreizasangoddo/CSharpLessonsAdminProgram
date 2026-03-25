@@ -8,15 +8,15 @@ namespace AdminProgramLessons
 {
     internal class UserListDatabase
     {
-        List<User> userList = new List<User>();
+        private List<User> _userList = new List<User>();
 
         public UserListDatabase()
         {
             User user1 = new User("Yassir Ouallal", "Drachtenstraat 4", "06 81994295", "yassir.ouallal@gmail.com", 16, "lemonke69420");
-            userList.Add(user1);
+            _userList.Add(user1);
 
             User user2 = new User("Deon Maes", "De Marken", "06 18217017", "deon.maes@gmail.com", 16, "pastapesto962");
-            userList.Add(user2);
+            _userList.Add(user2);
         }
 
         public void AddUser()
@@ -83,13 +83,13 @@ namespace AdminProgramLessons
                 email = Console.ReadLine();
 
                 // Checkt of de email een @-tekentje en ".com" heeft en is gelijk aan of langer dan 15 tekens
-                if (!email.Contains("@") && !email.Contains(".com") && email.Length <= 15)
+                if (!email.Contains("@") || !email.Contains(".com") || email.Length <= 15)
                 {
                     Console.Clear();
                     Console.WriteLine("Ongeldige invoer. Email moet de standaard eigenschappen bevatten.");
                 }
             }
-            while (!email.Contains("@") && !email.Contains(".com") && email.Length <= 15);
+            while (!email.Contains("@") || !email.Contains(".com") || email.Length <= 15);
 
             Console.Clear();
 
@@ -123,7 +123,7 @@ namespace AdminProgramLessons
             Console.WriteLine("Klant succesvol toegevoegd! \n");
 
             User AddNewUser = new User(name, address, phoneNumber, email, age, password);
-            userList.Add(AddNewUser);
+            _userList.Add(AddNewUser);
         }
 
 
@@ -131,7 +131,7 @@ namespace AdminProgramLessons
         {
             Console.Clear();
 
-            if (userList.Count == 0)
+            if (_userList.Count == 0)
             {
                 Console.Clear();
                 
@@ -140,7 +140,7 @@ namespace AdminProgramLessons
             else
             {
                 Console.Clear();
-                foreach (User user in userList)
+                foreach (User user in _userList)
                 {
                     user.Display();
                     Console.WriteLine(" ");
@@ -150,7 +150,7 @@ namespace AdminProgramLessons
 
         public void EditUser()
         {
-            if (userList.Count == 0)
+            if (_userList.Count == 0)
             {
                 Console.Clear();
 
@@ -165,13 +165,13 @@ namespace AdminProgramLessons
                 Console.WriteLine("Welke klant wil je bewerken?");
                 int index;
 
-                while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+                while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > _userList.Count)
                 {
                     Console.WriteLine("Ongeldige keuze.");
                 }
 
-                User user = userList[index - 1];
-                userList.RemoveAt(index - 1);
+                User user = _userList[index - 1];
+                _userList.RemoveAt(index - 1);
 
                 Console.Clear();
 
@@ -181,7 +181,7 @@ namespace AdminProgramLessons
 
         public void DeleteUser()
         {
-            if (userList.Count == 0)
+            if (_userList.Count == 0)
             {
                 Console.Clear();
 
@@ -196,12 +196,12 @@ namespace AdminProgramLessons
                 Console.WriteLine("Welke klant wil je verwijderen?");
                 int index;
 
-                while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > userList.Count)
+                while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > _userList.Count)
                 {
                     Console.WriteLine("Ongeldige keuze.");
                 }
 
-                userList.RemoveAt(index - 1);
+                _userList.RemoveAt(index - 1);
 
                 Console.Clear();
 
