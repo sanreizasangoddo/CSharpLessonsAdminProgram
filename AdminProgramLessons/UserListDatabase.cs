@@ -82,6 +82,7 @@ namespace AdminProgramLessons
                 Console.WriteLine("Voer uw email in:");
                 email = Console.ReadLine();
 
+                // Checkt of de email een @-tekentje en ".com" heeft en is gelijk aan of langer dan 15 tekens
                 if (!email.Contains("@") && !email.Contains(".com") && email.Length <= 15)
                 {
                     Console.Clear();
@@ -95,6 +96,7 @@ namespace AdminProgramLessons
             int age;
             Console.WriteLine("Voer uw leeftijd in:");
 
+            // Checkt of age alleen uit cijfers bestaat, lager is dan of gelijk aan 5 en hoger is dan of gelijk aan 123
             while (!int.TryParse(Console.ReadLine(), out age) || age <= 5 || age >= 123)
             {
                 Console.WriteLine("Ongeldige invoer. Voer een geldig leeftijd in.");
