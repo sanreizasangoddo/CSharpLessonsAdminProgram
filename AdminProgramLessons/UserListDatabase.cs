@@ -65,7 +65,7 @@ namespace AdminProgramLessons
                 // Checkt of er geen letters in jouw telefoonnummer staan
                 foreach (char c in phoneNumber)
                 {
-                    if (!char.IsDigit(c) && c != ' ' || phoneNumber.Length != 11)
+                    if (!char.IsDigit(c) && c != ' ' || phoneNumber.Length < 10 || phoneNumber.Length > 11)
                     {
                         geldig = false;
                         Console.Clear();
